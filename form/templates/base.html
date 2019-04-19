@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head%}
+            {% block metas %}
+                <meta charset="utf-8">
+            {% endblock metas %}
+
+            <title>
+                {% block title %}Form-HelloFlask
+                {% endblock title %}
+            </title>
+            <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+            {% block style %}
+                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+            {% endblock style %}
+        {% endblock head %}
+    </head>
+    <body>
+        <nav>
+            {% block nav %}
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+            {% endblock %}
+        </nav>
+
+        <main>
+            {% for message in get_flashed_messages() %}
+                <div class="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            {% block footer %}
+                <small> &copy; 2018 <a href="https://heyb7.github.io" title="hey7's blog">Heyb</a>
+                    <a href="https://github.com/heyb7">Github</a>
+                </small>
+            {% endblock %}
+        </footer>
+    </body>
+</html>
