@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Custom Validator</h2>
+
+<form method="post">
+    {{ form.csrf_token }}
+    {{ form.answer.label }}<br>
+    {{ form.answer }}<br>
+    {% for message in form.answer.errors %}
+        <small class="error">{{ message }}</small><br>
+    {% endfor %}
+    {{ form.submit }}<br>
+</form>
+{% endblock %}
