@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Integrate CKEditor with Flask-CKEditor</h1>
+<form method="post">
+    {{ form.csrf_token }}
+    {{ form.title.label }}<br>
+    {{ form.title }}<br>
+    {{ form.body.label }}<br>
+    {{ form.body }}<br>
+    {{ form.submit }}
+</form>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='body') }}
+{% endblock %}
